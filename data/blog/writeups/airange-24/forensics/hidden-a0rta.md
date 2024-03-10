@@ -1,5 +1,5 @@
 ---
-title: AUPCTF'23 - Forensics - Hidden A0rta
+title: AIRANGE'24 - Forensics - Hidden A0rta
 date: '2024-03-10'
 tags: ['ctf', 'forensics', 'airange', 'writeup', 'steghide']
 draft: false

@@ -1,5 +1,5 @@
 ---
-title: AIRANGE'24 - Reversing - Constraints
+title: AIRANGE'24 - Rev - Constraints
 date: '2024-03-10'
 tags: ['ctf', 'reversing', 'airange', 'writeup', 'z3']
 draft: false

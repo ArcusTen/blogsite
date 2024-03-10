@@ -1,7 +1,7 @@
 ---
 title: AIRANGE'24 - Web - Sudo Arena
 date: '2024-03-10'
-tags: ['ctf', 'web', 'burpsuite', 'writeup', 'fuzzing', 'ffuf']
+tags: ['ctf', 'web', 'burpsuite', 'airange', 'writeup', 'fuzzing', 'ffuf']
 draft: false
 summary: It this challenge we will learn about directory fuzzing & as well as query fuzzing.
 ---

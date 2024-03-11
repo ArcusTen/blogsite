@@ -15,6 +15,10 @@ Ashfaq Nadeem made an unbreakable licensing software
 
 ## Solution
 
+My friend Kumail and I solved this challenge together.
+
+![screenshot](/static/writeups/airange24/rev/bloods.png)
+
 First of all open the compiled code in ghidra. Here, in the main function, we can see that **`verify`** function is called by providing key (entered by the user) as argument/parameters:
 
 ![screenshot](/static/writeups/airange24/rev/Untitled.png)

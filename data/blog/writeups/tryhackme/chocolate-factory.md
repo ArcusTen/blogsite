@@ -3,7 +3,7 @@ title: TryHackMe - Boot2Root - Chocolate Factory
 date: '2024-03-20'
 tags: ['ctf', 'tryhackme', 'boot2root', 'writeup', 'steghide']
 draft: false
-summary: An easy room with web shell available and root's SUID present in the server
+summary: An easy room with web shell available. 
 ---
 
 ## Challenge Description

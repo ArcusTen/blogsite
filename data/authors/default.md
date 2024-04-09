@@ -1,6 +1,6 @@
 ---
 name: Muhammad Haris
-avatar: /static/images/haris.jpg
+avatar: /static/images/miles.jpg
 occupation: Jr DevOps Engineer & CYS Student
 email: haris@thecyberthesis.com
 twitter: https://twitter.com/arcusten

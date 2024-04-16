@@ -11,7 +11,7 @@ summary: Understanding what is Docker, its significance, workings, how it can be
 1. **[What is Docker?](#what-is-docker)**
 2. **[Why We Use Docker?](#why-we-use-docker)**
 3. **[How Does it Work?](#how-does-it-work)**
-   - **[DIfference b/w Virtualization & Containerization](#virtualization-vs-containerization)**
+   - **[Difference b/w Virtualization & Containerization](#virtualization-vs-containerization)**
 4. **[Docker Architecture](#docker-architecture)**
     - **[Docker Daemon](#docker-daemon-server)**
     - **[Docker Client](#docker-client-user-interface)**

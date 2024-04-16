@@ -5,6 +5,12 @@ tags: ['pwn', 'fmt', 'arbitrary-write', 'picoctf']
 draft: false
 summary: Overwriting a variable using the Format String Bug to fulfill an if-else condition for printing flag.txt. A very interesting challenge, to be honest.
 ---
+## Challenge Description
+
+![Fmt-2-sc](/static/writeups/picoCTF/format-string-2/fmt2_chal_des.png)
+
+## Solution
+
 Before starting, I want to say that I am not an expert when it comes to binary exploitation. If you find mistakes in my write-ups, please let me know. I am open to any sort of constructive criticism
 
 Source code provided to us:

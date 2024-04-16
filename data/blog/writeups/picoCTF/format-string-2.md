@@ -11,7 +11,7 @@ summary: Overwriting a variable using the Format String Bug to fulfill an if-els
 
 ## Solution
 
-Before starting, I want to say that I am not an expert when it comes to binary exploitation. If you find mistakes in my write-ups, please let me know. I am open to any sort of constructive criticism
+Before starting, I want to say that I am not an expert when it comes to binary exploitation. If you find mistakes in my write-ups, please let me know. I am open to any sort of constructive criticism.
 
 Source code provided to us:
 ```c:vuln.c
@@ -78,6 +78,8 @@ Now, I know that I also need to know what address to write to. In this case it c
 ```bash:objdump-command
 objdump -D ./vuln | grep "sus"
 ```
+
+![Fmt-2-sc](/static/writeups/picoCTF/format-string-2/fmt2_2.png)
 
 So, basically I want to overwrite address `0x404060` with the value `0x67616c66`. Let’s start making our payload.
 

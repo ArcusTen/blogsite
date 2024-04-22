@@ -48,6 +48,6 @@ A junior DevOps engineer and cybersecurity student. I am passionate about integr
 ## Additional Experiences
 
 - **Leader** at **ColdTea** (2024 - Present)
+- **Member** at [Griffyns](https://ctftime.org/team/221924) (Country place: [15](https://ctftime.org/stats/PK))
 - **Member** at [AUCSS Red Team Society](https://aucss.live/) (2023 - Present)
 - **Member** at [AUCSS  Coding Society](https://aucss.live/) (2023 - Present)
-

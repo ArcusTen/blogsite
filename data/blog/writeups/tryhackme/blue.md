@@ -55,7 +55,7 @@ Search for **`eternalblue`** exploit:
 
 ![Screenshot](/static/writeups/tryhackme/blue/Untitled6.png)
 
-We will use **`exploit/windows/smb/ms17_010_eternalblue`** get a remote code execution
+We will use **`exploit/windows/smb/ms17_010_eternalblue`**
 
 ![Screenshot](/static/writeups/tryhackme/blue/Untitled7.png)
 

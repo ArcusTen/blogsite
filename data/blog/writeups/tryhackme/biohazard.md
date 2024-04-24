@@ -238,7 +238,7 @@ Here is an overview how all the crests will be decoded:
 #### Crest 4:
 ![Screenshot](/static/writeups/tryhackme/biohazard/Untitled44.png)
 
-Concatenating all string:
+Concatenating all strings:
 
 ```
 Decoded crest 1: RlRQIHVzZXI6IG
@@ -334,7 +334,7 @@ It will prompt you for the password; enter the one we found earlier.
 
 ![Screenshot](/static/writeups/tryhackme/biohazard/Untitled55.png)
 
-Here the helmet key:
+Here is the helmet key:
 
 ![Screenshot](/static/writeups/tryhackme/biohazard/Untitled56.png)
 
@@ -387,7 +387,7 @@ Let the fun part begin.
 
 ![Screenshot](/static/writeups/tryhackme/biohazard/Untitled65.png)
 
-First time that I noticed after logging in was `.jailcell` directory:
+First thing that I noticed after logging in was `.jailcell` directory:
 
 ![Screenshot](/static/writeups/tryhackme/biohazard/Untitled66.png)
 

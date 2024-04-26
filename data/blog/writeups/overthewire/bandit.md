@@ -1,9 +1,9 @@
 ---
 title: OverTheWire - Bandit All levels (Solved)
 date: '2024-04-26'
-tags: ['linux', 'overthewire', 'bandit']
+tags: ['linux', 'overthewire', 'bandit', 'wargames']
 draft: false
-summary: ...
+summary: The Bandit wargame is aimed at absolute beginners. It will teach the basics needed to be able to play other wargames. Don’t panic! Don’t give up! The purpose of this game is for you to learn the basics. Part of learning the basics, is reading a lot of new information
 
 ---
 
@@ -260,313 +260,379 @@ And now cat that file out:
     
 ---
 
-### ***Level 07:***
+## Level 07:
 
-***The password for the next level is stored in the file data.txt next to the word millionth.***
+**The password for the next level is stored in the file data.txt next to the word millionth.**
 
-```bash
+```:Password
 TESKZC0XvTetK0S9xNwm25STk5iWrBvP
 ```
 
-- ***Explanation:***
-    
-    ```bash
-    cat data.txt | grep "millionth"
-    ```
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/af4bf21b-2eca-414f-b374-49ce0586933c/Untitled.png)
-    
+#### Explanation:
+
+I used `grep` to filter out line that contains word "millionth". Command that I used:
+
+```bash
+cat data.txt | grep "millionth"
+```
+
+`|`: This is known as a pipe operator. It takes the output of the command on its left (`cat data.txt` in this case) and sends it as input to the command on its right (`grep "millionth"`).
+
+Output:
+
+![Level-7](/static/writeups/overthewire/bandit/bandit-level7-1.png)
 
 ---
 
-### ***Level 08:***
+## Level 08:
 
-***The password for the next level is stored in the file data.txt and is the only line of text that occurs only once.***
+**The password for the next level is stored in the file data.txt and is the only line of text that occurs only once.**
 
-```bash
+```:Password
 EN632PlfYiZbn3PhVK3XOGSlNInNE00t
 ```
 
-- ***Explanation:***
-    
-    *I read* **`uniq`** *command and saw this:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/6e29bcb4-b232-4a97-98d3-b6d298862a06/Untitled.png)
-    
-    ```bash
-    sort data.txt | uniq -u
-    ```
-    
+#### Explanation:
+
+For this challenge I was read manual of `uniq` command and saw this:
+
+![Level-8](/static/writeups/overthewire/bandit/bandit-level8-1.png)
+
+So the final command that I used:
+
+```bash
+sort data.txt | uniq -u
+```
+
+![Level-8](/static/writeups/overthewire/bandit/bandit-level8-2.png)
 
 ---
 
-### ***Level 09:***
+## Level 09:
 
-***The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.***
+**The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.**
 
-```
+```:Password
 G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
 ```
 
-- ***Explanation:***
-    
-    ```bash
-    strings data.txt | grep "=="
-    ```
-    
-    *(we are using strings command to find for strings (human-readable) in data.txt)*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/c09f9db3-047d-4bea-b405-7abfef3e5d88/Untitled.png)
-    
+#### Explanation:
+
+I used `strings` command to find for strings (human-readable) in data.txt:
+
+```bash
+strings data.txt | grep "=="
+```
+
+![Level-9](/static/writeups/overthewire/bandit/bandit-level9-1.png)
 
 ---
 
-### ***Level 10:***
+## Level 10:
 
-***The password for the next level is stored in the file data.txt, which contains base64 encoded data.***
+**The password for the next level is stored in the file data.txt, which contains base64 encoded data.**
 
-```
+```:Password
 6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM
 ```
 
-- ***Explanation:***
-    
-    ```bash
-    base64 -d data.txt
-    ```
-    
+#### Explanation:
+
+This is how you can decode a base64 encoded string, in linux:
+
+```bash
+base64 -d data.txt
+```
+
+`-d`: This option is used to decode a base64 encoded data.
+
+![Level-10](/static/writeups/overthewire/bandit/bandit-level10-1.png)
 
 ---
 
-### ***Level 11:***
+## Level 11
 
-***The password for the next level is stored in the file data.txt,
-where all lowercase (a-z) and uppercase (A-Z) letters have been
-rotated by 13 positions.***
+**The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions.**
 
-```bash
+```:Password
 JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv
 ```
 
-- ***Explanation:***
-    
-    ***Method 1:***
-    
-    *Copy the contents of data.txt and decode it in* **`dcode.fr/rot-13-cipher`**
-    
-    ***Method 2:***
-    
-    *To decode a rot13 encrypted text (within terminal):*
-    
-    ```bash
-    cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
-    ```
-    
+#### Explanation:
+
+This is how you can decode a rot13 encoded string, in linux:
+
+```bash
+cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+```
+
+`tr 'A-Za-z' 'N-ZA-Mn-za-m'`: This command, tr (short for "translate" or "transliterate"), is used to replace characters in a stream of text.
+
+- The first argument, `'A-Za-z'`, specifies the range of characters to be translated. Here, it covers all uppercase and lowercase letters in the English alphabet.
+
+- The second argument, `'N-ZA-Mn-za-m'`, specifies the replacement characters for each character in the range defined in the first argument. This particular sequence is a Caesar cipher with a shift of 13 characters, commonly known as ROT13. It shifts each letter 13 positions forward in the alphabet, wrapping around if necessary. For example, 'A' becomes 'N', 'B' becomes 'O', 'C' becomes 'P', and so on.
+
+![Level-11](/static/writeups/overthewire/bandit/bandit-level11-1.png)
 
 ---
 
-### ***Level 12:***
+## Level 12:
 
-***The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the man pages!)***
+**The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the man pages!)**
 
-```bash
+```:Password
 wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw
 ```
 
-- ***Explanation:***
-    
-    *Creating a directory under tmp and copying data.txt file into it because we don’t have permission*
-    
-    ```bash
-    xxd -r data.txt > data
-    ```
-    
-    `**xxd**` *is used to make a hexadump or do the reverse* **`-r`** *means ‘to reverse’*
-    
-    *Now file the data, change its extension to its actual file type, decompress it. OVER AND OVER AGAIN*
-    
-    ```bash
-    mv data data.gz
-    ```
-    
-    ```bash
-    gzip -d data.gz
-    ```
-    
-    ```bash
-    mv data data.bz2
-    ```
-    
-    ```bash
-    bzip2 -d data.bz2
-    ```
-    
-    ```bash
-    mv data data.gz
-    ```
-    
-    ```bash
-    gzip -d data.gz
-    ```
-    
-    ```bash
-    mv data data.tar
-    ```
-    
-    ```bash
-    tar -xf data.tar
-    ```
-    
-    ```bash
-    mv data5.bin data5.tar
-    ```
-    
-    ```bash
-    tar -xf data5.tar
-    ```
-    
-    ```bash
-    mv data6.bin data6.bz2
-    ```
-    
-    ```bash
-    bzip2 -d data6.bz2
-    ```
-    
-    ```bash
-    mv data6 data6.tar
-    ```
-    
-    ```bash
-    tar -xf data6.tar
-    ```
-    
-    ```bash
-    mv data8.bin data8.gz
-    ```
-    
-    ```bash
-    gzip -d data8.gz
-    ```
-    
-    *Finally, you will get an ASCII text, cat that out.*
-    
-    ```bash
-    **cat data8**
-    ```
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/b818cd62-3a1e-4339-be09-da29e2559763/Untitled.png)
-    
+#### Explanation:
+
+Creating a directory under tmp and copying data.txt file into it because we don’t have permission to write into home directory 🙃
+
+```bash
+mkdir /tmp/arcus && cp data.txt /tmp/arcus && cd /tmp/arcus
+```
+
+Now lets convert `data.txt` back to its binary form:
+
+```bash
+xxd -r data.txt > data
+```
+
+`xxd`: is typically used for creating a hex dump of a given file or for converting a hex dump back into its original binary form.
+
+`-r`: This option tells `xxd` to reverse the operation of creating a hex dump and instead convert a hex dump back into binary form.
+
+`> data`: This part of the command is redirecting the output of the xxd command to a file named data. So, the binary data resulting from the conversion will be stored in a file named data.
+
+Now run `file` command on `data` to see its actual file type and change its extension to its actual file type and then decompress it. We have to repeat this process over and over again:
+
+![Level-12](/static/writeups/overthewire/bandit/bandit-level12-1.png)
+
+```bash
+mv data data.gz
+```
+
+Now, decompress it using this command:
+
+```bash
+gzip -d data.gz
+```
+
+Check the file type of `data`:
+
+![Level-12](/static/writeups/overthewire/bandit/bandit-level12-2.png)
+
+```bash
+mv data data.bz2
+```
+
+Now, decompress it using this command:
+
+```bash
+bzip2 -d data.bz2
+```
+
+Check the file type of `data`:
+
+![Level-12](/static/writeups/overthewire/bandit/bandit-level12-3.png)
+
+```bash
+mv data data.gz
+```
+
+Now, decompress it using this command:
+
+```bash
+gzip -d data.gz
+```
+
+Check the file type of `data`:
+
+![Level-12](/static/writeups/overthewire/bandit/bandit-level12-4.png)
+
+```bash
+mv data data.tar
+```
+
+Now, decompress it using this command:
+
+```bash
+tar -xf data.tar
+```
+
+We how have a file named `data5.bin`:
+
+![Level-12](/static/writeups/overthewire/bandit/bandit-level12-5.png)
+
+```bash
+mv data5.bin data5.tar
+```
+
+Now, decompress it using this command:
+
+```bash
+tar -xf data5.tar
+```
+
+We how have a file named `data6.bin`:
+
+![Level-12](/static/writeups/overthewire/bandit/bandit-level12-6.png)
+
+```bash
+mv data6.bin data6.bz2
+```
+
+Now, decompress it using this command:
+
+```bash
+bzip2 -d data6.bz2
+```
+
+Check the file type of `data6`:
+
+![Level-12](/static/writeups/overthewire/bandit/bandit-level12-7.png)
+
+```bash
+mv data6 data6.tar
+```
+
+Now, decompress it using this command:
+
+```bash
+tar -xf data6.tar
+```
+
+We how have a file named `data6.bin`:
+
+![Level-12](/static/writeups/overthewire/bandit/bandit-level12-8.png)
+
+```bash
+mv data8.bin data8.gz
+```
+
+Now, decompress it using this command:
+
+```bash
+gzip -d data8.gz
+```
+
+Finally, we got an ASCII file, cat that out:
+
+
+![Level-12](/static/writeups/overthewire/bandit/bandit-level12-9.png)
+
 
 ---
 
-### ***Level 13:***
+## Level 13:
 
-***The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on.***
+**The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on.**
 
-```bash
+```:Password
 fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq
 ```
 
-***Note:** This is actual password for bandit level 14*
+**Note**: This is actual password for bandit level 14
 
-- ***Explanation:***
-    
-    *To use the private key for* **`SSH`** *authentication, simply use the ‘***`ssh`***’ command with the* **`-i`** *flag
-    to specify the path to your private key. i.e.,* **`ssh -i ~/.ssh/id_rsa username@remote_server`**
-    
-    ```bash
-    ssh -i sshkey.private bandit14@localhost -p 2220
-    ```
-    
-    *Now after logging in:*
-    
-    ```bash
-    cat /etc/bandit_pass/bandit14
-    ```
-    
+#### Explanation:
+
+To use the private key for **`SSH`** authentication, simply use the `ssh` command with the `-i` flag to specify the path to your private key. i.e., `ssh -i ~/.ssh/id_rsa username@remote_server`
+
+```bash
+ssh -i sshkey.private bandit14@localhost -p 2220
+```
+
+Now after logging in:
+
+```bash
+cat /etc/bandit_pass/bandit14
+```
+
+![Level-13](/static/writeups/overthewire/bandit/bandit-level13-1.png)
 
 ---
 
-### ***Level 14:***
+## Level 14:
 
-***The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.***
+**The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.**
 
-```bash
+```:Password
 jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt
 ```
 
-- ***Explanation:***
-    
-    ```bash
-    nc [localhost](http://localhost) 30000
-    ```
-    
-    *Submitting password “fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq”
-    Remember to stay logged in bandit’s servernc localhost 30000*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/508dc003-c475-4be1-95cd-8cc4b1681ceb/Untitled.png)
-    
+#### Explanation:
+
+I used netcat for establishing network connection:
+
+```bash
+nc localhost 30000
+```
+
+Submit password `fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq`
+
+(Remember to stay logged into the server)
+
+![Level-14](/static/writeups/overthewire/bandit/bandit-level14-1.png)
 
 ---
 
-### ***Level 15:***
+## Level 15:
 
-***The password for the next level can be retrieved by submitting the password of the current level to port 30001 on localhost using SSL encryption.***
+**The password for the next level can be retrieved by submitting the password of the current level to port 30001 on localhost using SSL encryption.**
 
-```bash
+```:Password
 JQttfApK4SeyHwDlI9SXGR50qclOAil1
 ```
 
-- ***Explanation:***
-    
-    ```bash
-    ncat --ssl localhost 30001 
-    ```
-    
-    *Submit password of current level*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/303237eb-546a-4bba-ab64-a3cca79aed2a/Untitled.png)
-    
+#### Explanation:
+
+As netcat doesn't have an option for SSL, I used netcat instead to establish a network connection for this task
+
+```bash
+ncat --ssl localhost 30001 
+```
+
+Submit password of current level (`jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt`)
+
+![Level-15](/static/writeups/overthewire/bandit/bandit-level15-1.png)
 
 ---
 
-### ***Level 16:***
+## Level 16:
 
-***The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. First find out which of these ports have a server listening on them. Then find out which of those speak SSL and which don’t. There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.***
+**The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. First find out which of these ports have a server listening on them. Then find out which of those speak SSL and which don’t. There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.**
 
 ```bash
 ssh -i key bandit17@bandit.labs.overthewire.org -p 2220
 ```
 
-- ***Explanation:***
-    
-    *Using this command to scan for open ports:*
-    
-    ```bash
-    nmap [localhost](http://localhost) -p 31000-32000
-    ```
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/f752d94f-addf-4792-abc8-209df724b93a/Untitled.png)
-    
-    *It will show a list of services. Submit the password of this level to all of them using:*
-    
-    ```bash
-    ncat --ssl [localhost](http://localhost) <port-no>
-    ```
-    
-    *One of them (port:* **`31790`***)will give aN RSA key.* 
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/38231b02-9ecd-4bb1-a53d-f0f2f1f11505/Untitled.png)
-    
-    *Copy it to your original hostdevice*
-    
-    *(remember to set permission to 400) and now connect to level 17 using this RSA key:*
-    
-    ```bash
-    ssh -i key bandit17@bandit.labs.overthewire.org -p 2220
-    ```
-    
+#### Explanation
+
+I used `nmap` to scan for open ports. Command that I used:
+
+```bash
+nmap localhost -p 31000-32000
+```
+
+![Level-16](/static/writeups/overthewire/bandit/bandit-level16-1.png)
+
+It will show a list of services. Submit the password of this level (`JQttfApK4SeyHwDlI9SXGR50qclOAil1`) to all of them using:
+
+```bash
+ncat --ssl localhost <port-no>
+```
+
+One of them (port: `31790`) will give a RSA key.
+
+![Level-16](/static/writeups/overthewire/bandit/bandit-level16-2.png)
+
+Copy it to your local machine and set its permission to 400 (`chmod 400 key`) and now connect to level 17 using this RSA key:
+
+```bash
+ssh -i key bandit17@bandit.labs.overthewire.org -p 2220
+```
+
+![Level-16](/static/writeups/overthewire/bandit/bandit-level16-3.png)
 
 ---
 

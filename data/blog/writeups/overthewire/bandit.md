@@ -206,14 +206,14 @@ find ~/inhere -type f -readable -size 1033c ! -executable
 
 `-size 1033c`: This specifies the size of the files to search for. Here, it looks for files with a size of exactly 1033 bytes (`c`).
 
-`! -executable`: This part of the command uses the `!` operator to negate the -executable condition. So, it excludes files that are not executable.
+`! -executable`: This part of the command uses the `!` operator to negate the -executable condition. So, it excludes files that are executable.
 
 ![Level-5](/static/writeups/overthewire/bandit/bandit-level5-1.png)
 
 And now cat that file out:
 
 ![Level-5](/static/writeups/overthewire/bandit/bandit-level5-2.png)
-    
+
 ---
 
 ## Level 06:
@@ -636,297 +636,359 @@ ssh -i key bandit17@bandit.labs.overthewire.org -p 2220
 
 ---
 
-### ***Level 17:***
+## Level 17:
 
-***There are 2 files in the homedirectory: passwords.old and passwords.new. The password for the next level is in passwords.new and is the only line that has been changed between passwords.old and passwords.new***
+**There are 2 files in the homedirectory: passwords.old and passwords.new. The password for the next level is in passwords.new and is the only line that has been changed between passwords.old and passwords.new**.
 
-***NOTE: if you have solved this level and see ‘Byebye!’ when trying to log into bandit18, this is related to the next level, bandit19***
+**NOTE: if you have solved this level and see ‘Byebye!’ when trying to log into bandit18, this is related to the next level, bandit19**.
 
-```
+```:Password
 hga5tuuCLF6fFzUpnagiMN8ssu9LFrdg
 ```
 
-- ***Explanation:***
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/b7b625d8-4b69-4b5f-a14d-fae7f4bb475c/Untitled.png)
-    
-    *Use this command:*
-    
-    ```bash
-    grep -f passwords.old --invert-match passwords.new
-    ```
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/4921dd51-42f9-4974-87fd-db776a08c1cc/Untitled.png)
-    
+#### Explanation:
+
+Man page of `grep`:
+
+![Level-17](/static/writeups/overthewire/bandit/bandit-level17-1.png)
+
+I used this command:
+
+```bash
+grep -f passwords.old --invert-match passwords.new
+```
+
+![Level-17](/static/writeups/overthewire/bandit/bandit-level17-2.png)
 
 ---
 
-### ***Level 18:***
+## Level 18:
 
-***The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH.***
+**The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH.**
 
-```bash
+```:Password
 awhqfNnAbc1naukrpqDYcF95h7HoMTrC
 ```
 
-- ***Explanation:***
-    
-    *No problem, if bashrc is corrupted then we can call simple sh (pseudo-shell)*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/18689b12-72c5-4918-a243-8c0b43099942/Untitled.png)
-    
-    *Follow these commands to get a shell:*
-    
-    ```bash
-    ssh -t bandit18@bandit.labs.overthewire.org -p 2220 /bin/sh
-    ```
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/406cd454-0f7c-474a-8e78-e582edf3fb77/Untitled.png)
-    
-    *Rest of challenge is simple.*
-    
+#### Explanation:
+
+No problem, if bashrc is corrupted then we can call simple sh (pseudo-shell)
+
+![Level-18](/static/writeups/overthewire/bandit/bandit-level18-1.png)
+
+I used this command to get a shell:
+
+```bash
+ssh -t bandit18@bandit.labs.overthewire.org -p 2220 /bin/sh
+```
+
+![Level-18](/static/writeups/overthewire/bandit/bandit-level18-2.png)
+
+Rest of challenge is simple.
+
+![Level-18](/static/writeups/overthewire/bandit/bandit-level18-3.png)
 
 ---
 
-### ***Level 19:***
+## Level 19:
 
-***To gain access to the next level, you should use the setuid binary in the homedirectory. Execute it without arguments to find out how to use it. The password for this level can be found in the usual place (/etc/bandit_pass), after you have used the setuid binary.***
+**To gain access to the next level, you should use the setuid binary in the homedirectory. Execute it without arguments to find out how to use it. The password for this level can be found in the usual place (/etc/bandit_pass), after you have used the setuid binary.**
 
-```bash
+```:Password
 VxCazJaVykI6W36BkBU0mJTCM8rR95XT
 ```
 
-- ***Explanation:***
-    
-    *Here, you can see am* **`ELF lsb-file bandit20-do`**  *with* **`bandit20`***’s user SUID set on it:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/859a9504-dd5e-4e8c-9a2b-d071d6e1751e/Untitled.png)
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/b2f5d581-fe6e-425f-aa82-475ceafa1639/Untitled.png)
-    
-    *And upon running it it tells us how to use it:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/0b46a450-5158-4ae3-a9ac-f32179b210e2/Untitled.png)
-    
-    *So let’s use use it to get* **`bandit20`***’s pasword:*
-    
-    ```bash
-    **./bandit20-do cat /etc/bandit_pass/bandit20**
-    ```
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/33394331-140a-4128-a8e8-933aec738680/Untitled.png)
-    
+#### Explanation:
+
+Here, you can see an `ELF` named `bandit20-do` with `bandit20`’s user SUID set on it:
+
+![Level-19](/static/writeups/overthewire/bandit/bandit-level19-2.png)
+
+![Level-19](/static/writeups/overthewire/bandit/bandit-level19-1.png)
+
+To learn about what is SUID and how they can be exploited. [Click here](https://github.com/ArcusTen/Intro-to-CYS-Lab/blob/main/README.md). Anyways, upon running it it tells us how to use it:
+
+![Level-19](/static/writeups/overthewire/bandit/bandit-level19-3.png)
+
+So let’s use use it to get `bandit20`’s pasword:
+
+```bash
+./bandit20-do cat /etc/bandit_pass/bandit20
+```
+
+![Level-19](/static/writeups/overthewire/bandit/bandit-level19-4.png)
 
 ---
 
-### ***Level 20:***
+## Level 20:
 
-***There is a setuid binary in the homedirectory that does the following: it makes a connection to localhost on the port you specify as a commandline argument. It then reads a line of text from the connection and compares it to the password in the previous level (bandit20). If the password is correct, it will transmit the password for the next level (bandit21).***
+**There is a setuid binary in the homedirectory that does the following: it makes a connection to localhost on the port you specify as a commandline argument. It then reads a line of text from the connection and compares it to the password in the previous level (bandit20). If the password is correct, it will transmit the password for the next level (bandit21).**
 
-***NOTE: Try connecting to your own network daemon to see if it works as you think***
+**NOTE: Try connecting to your own network daemon to see if it works as you think.**
 
-```bash
+```:Password
 NvEJF7oVjkddltPSrdKEFOllh9V1IBcq
 ```
 
-- ***Explanation:***
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/cee8d8ae-119d-4589-97c3-f07460de3cd8/Untitled.png)
-    
+#### Explanation:
+
+Set up a netcat listener on your local machine, on any port:
+
+![Level-20](/static/writeups/overthewire/bandit/bandit-level20-1.png)
+
+Now set password of current level `VxCazJaVykI6W36BkBU0mJTCM8rR95XT`:
+
+![Level-20](/static/writeups/overthewire/bandit/bandit-level20-2.png)
 
 ---
 
-### ***Level 21:***
+## Level 21:
 
-***A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.***
+**A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.**
 
-```bash
+```:Password
 WdDozAdTM2z9DiFEQ2mGlwngMfj4EZff
 ```
 
-- ***Explanation:***
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/0164544d-3aaf-456d-b401-ed5db9f26d0c/Untitled.png)
-    
+#### Explanation:
+
+In `/etc/cron.d` directory, you can find a cronjob for `bandit22` which runs `cronjob_bandit22.sh` script, very minute of every hour of every day. This script is just basically storing password for `bandit22` into another file that is readable by other users.
+
+![Level-21](/static/writeups/overthewire/bandit/bandit-level21-1.png)
 
 ---
 
-### ***Level 22:***
+## Level 22:
 
-***A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.***
+**A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.**
 
-***NOTE: Looking at shell scripts written by other people is a very useful skill. The script for this level is intentionally made easy to read. If you are having problems understanding what it does, try executing it to see the debug information it prints.***
+**NOTE: Looking at shell scripts written by other people is a very useful skill. The script for this level is intentionally made easy to read. If you are having problems understanding what it does, try executing it to see the debug information it prints.**
 
-```bash
+```:Password
 QYw0Y2aiA672PsMmh9puTQuhoz8SyR2G
 ```
 
-- ***Explanation:***
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/b68bcea5-6fee-4601-9941-24bd0c4322f7/Untitled.png)
-    
+#### Explanation:
+
+In `/etc/cron.d` directory, you can find a cronjob for `bandit23` which runs `cronjob_bandit23.sh` script, very minute of every hour of every day. This script is just basically storing password for `bandit23` into another file named after string "bandit23" MD5 hash value and that file is present in `/tmp` directory. How do I know? Because the script is being run as the user bandit23, who is the owner of this file and the cronjob, the result of the whoami command will be bandit23:  
+
+![Level-22](/static/writeups/overthewire/bandit/bandit-level22-1.png)
+
+So, to find out the name of the file that has the password for `bandit23` stored in it, I used this command:
+
+```bash
+echo "I am user bandit23" | md5sum | cut -d ' ' -f 1
+```
+
+![Level-22](/static/writeups/overthewire/bandit/bandit-level22-2.png)
+
 
 ---
 
-### ***Level 23:***
+## Level 23:
 
-***A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.***
+**A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.**
 
-***NOTE: This level requires you to create your own first shell-script. This is a very big step and you should be proud of yourself when you beat this level!***
+**NOTE: This level requires you to create your own first shell-script. This is a very big step and you should be proud of yourself when you beat this level!**
 
-***NOTE 2: Keep in mind that your shell script is removed once executed, so you may want to keep a copy around…***
+**NOTE 2: Keep in mind that your shell script is removed once executed, so you may want to keep a copy around…**
 
-```bash
+```:Password
 VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar
 ```
 
-- ***Explanation:***
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/f28860e0-94ea-42b7-b9e7-5d8d0d2c9f4f/Untitled.png)
-    
-    *Contents of* **`/tmp/itsctrl/main.sh`***:*
-    
-    ```bash
-    #!/bin/bash
-    
-    cat /etc/bandit_pass/bandit24 > /tmp/itsctrl/pass.txt
-    ```
-    
+#### Explanation:
+
+In `/etc/cron.d` directory, you can find a cronjob for `bandit24` which runs `cronjob_bandit24.sh` script, very minute of every hour of every day. This script is 
+
+![Level-23](/static/writeups/overthewire/bandit/bandit-level23-1.png)
+
+Contents of `/usr/bin/cronjob_bandit24.sh`:
+
+```bash
+#!/bin/bash
+
+myname=$(whoami)
+
+cd /var/spool/$myname/foo
+echo "Executing and deleting all scripts in /var/spool/$myname/foo:"
+for i in * .*;
+do
+    if [ "$i" != "." -a "$i" != ".." ];
+    then
+        echo "Handling $i"
+        owner="$(stat --format "%U" ./$i)"
+        if [ "${owner}" = "bandit23" ]; then
+            timeout -s 9 60 ./$i
+        fi
+        rm -f ./$i
+    fi
+done
+```
+
+This script starts by figuring out the current user's name, then heads over to a specific directory named `/var/spool/$myname/foo`. It goes through all the files in there, even the hidden ones like `.` and `..`, and for each file, it looks at who owns it. If the owner is labeled as `bandit23`, it runs the script but sets a limit of 60 seconds, then promptly removes the script file from the directory.
+
+So, what I will do is first create a directory where everyone can read, write, and execute and I will also create a file in `/var/spool/bandit24/foo` to copy the password of `bandit24` from `/etc/bandit_pass/bandit24` into a file that I can read. Since (according to the cronjob) scripts owned by me will be executed as `bandit24`, I will have no problem executing my script.
+
+Commands will be:
+
+![Level-23](/static/writeups/overthewire/bandit/bandit-level23-3.png)
+
+Contents of `/tmp/ineedcontrol/main.sh`:
+
+![Level-23](/static/writeups/overthewire/bandit/bandit-level23-2.png)
+
+Save it, copy it to `/var/spool/bandit24/foo` make it executable and wait for 1-2 mints:
+
+![Level-23](/static/writeups/overthewire/bandit/bandit-level23-4.png)
+
+And then cat `/tmp/ineedcontrol/pass.txt`:
+
+![Level-23](/static/writeups/overthewire/bandit/bandit-level23-5.png)
 
 ---
 
-### ***Level 24:***
+## Level 24:
 
-***A daemon is listening on port 30002 and will give you the password for bandit25 if given the password for bandit24 and a secret numeric 4-digit pincode. There is no way to retrieve the pincode except by going through all of the 10000 combinations, called brute-forcing.*** 
+**A daemon is listening on port 30002 and will give you the password for bandit25 if given the password for bandit24 and a secret numeric 4-digit pincode. There is no way to retrieve the pincode except by going through all of the 10000 combinations, called brute-forcing.** 
 
-***You do not need to create new connections each time***
+**You do not need to create new connections each time**.
 
-```bash
+```:Password
 p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d
 ```
 
-- ***Explanation:***
-    
-    *Let me check if we have hydra:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/ae7ce690-2cab-42b9-b1cb-27819f589dbf/Untitled.png)
-    
-    *No. We don’t have it. But wait, We can write a bash script to do that:*
-    
-    ```bash
-    #!/bin/bash
-    
-    for i in {0000..9999}
-    do      
-    	#echo "$i"
-    	echo "VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar $i"
-    done | nc localhost 30002
-    ```
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/fda60151-5505-45fd-bde8-9b629816e1a7/Untitled.png)
-    
-    *Remember to do this in a writeable directory, you can create one in* **`/tmp`**
-    
+#### Explanation:
+
+I wrote a bash script to bruteforce all the possible 10,000 password combinations:
+
+```bash:brute.sh
+#!/bin/bash
+
+for i in {0000..9999}
+do      
+	#echo "$i"
+	echo "VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar $i"
+done | nc localhost 30002
+```
+
+Make it executable and run it:
+
+![Level-24](/static/writeups/overthewire/bandit/bandit-level24-1.png)
+
+(Remember to do this in a writeable directory, you can create one in `/tmp`.)
+
 
 ---
 
-### ***Level 25:***
+## Level 25:
 
-***Logging in to bandit26 from bandit25 should be fairly easy… The shell for user bandit26 is not /bin/bash, but something else. Find out what it is, how it works and how to break out of it.***
+**Logging in to bandit26 from bandit25 should be fairly easy… The shell for user bandit26 is not /bin/bash, but something else. Find out what it is, how it works and how to break out of it.**
 
-```bash
+```:Password
 c7GvcKlw9mC7aUQaPx7nwFstuAIBw1o1
 ```
 
-- ***Explanation:***
-    
-    *It automatically logs us out when try to connect:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/7633c31f-e741-4790-8f17-7642ed1dc2cf/Untitled.png)
-    
-    *They said the shell of bandit26 is different so let’s have a look at it first:*
-    
-    ```bash
-    cat /etc/passwd | grep "bandit26"
-    ```
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/7c13ee5e-ab82-4937-a3e5-648767ecfcff/Untitled.png)
-    
-    **`showtext`***??* *Never heard of that type of shell.* 
-    
-    *So, I searched a bit and yes there is no such such type of shell. Let’s have a look at its executable:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/e98e9cd0-53dd-4db2-9e84-970924f6e617/Untitled.png)
-    
-    *So, its basically just using more command to read a file and then exiting with exit code of 0. So that’s why it automatically disconnects when tried to run.*
-    
-    *What we need to do is to trigger more command to go into its command view. So, the ssh request doesn’t just exit.* 
-    
-    *Let’s make our terminal as small as possible then ssh in:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/60298fd2-f099-409a-9687-fc791ace02e5/Untitled.png)
-    
-    *So yeah we have successfully launched more command in its command mode.*
-    
-    ***that’s the way to break out. Very out of the box to get out of the box.***
-    
-    *Now, If we look at the man-page of more we can see that by pressing the “v” key (while in interactive mode) it will open the current line in an editor that is defined by the VISUAL and EDITOR environment variables. If both the variables are not set then Vim will be used. Lets see on pressing “v” which editor we get.*
-    
-    *And we got vim:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/577630eb-c8e9-4377-a27b-0834eb71dc18/Untitled.png)
-    
-    *Now, we can open another file using* **`:e`** *command.* 
-    
-    *We will want the bandit26 password so the command will be:*
-    
-    ```bash
-    :e /etc/bandit_pass/bandit26
-    ```
-    
-    *And we got the pass:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/d0682ae4-6f41-4e35-b489-0b4a5c59bfe3/Untitled.png)
-    
-    *but we haven’t got a shell still and when we will ssh into this level it will still kick us out.*
-    
-    *Thank God we can call a shell from Vim; otherwise, it would be a hell of a difficulty level.*
-    
-    *(I know how to spawn a shell while staying in vim. I learned it in a tryhackme room if you are wondering 😉)*
-    
-    *Type the following commands:*
-    
-    ```bash
-    set shell=/bin/bash
-    ```
-    
-    ```bash
-    :shell
-    ```
-    
-    *And we are in:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/ab76de12-ca0d-462c-bd07-3b1f1396b80b/Untitled.png)
-    
-    *Tricky challenge IK.*
-    
+#### Explanation:
+
+We have a private ssh key for `bandit26`:
+
+![Level-25](/static/writeups/overthewire/bandit/bandit-level25-1.png)
+
+Let's try to login using this key:
+
+```bash
+ssh -i bandit26.sshkey bandit26@bandit.labs.overthewire.org -p 2220
+```
+
+It automatically logs me out when I try to connect to it:
+
+![Level-25](/static/writeups/overthewire/bandit/bandit-level25-2.png)
+
+In the challenge description, they said the shell of bandit26 is not a regular bash shell, it's different, so let’s have a look at it first:
+
+```bash
+cat /etc/passwd | grep "bandit26"
+```
+
+![Level-25](/static/writeups/overthewire/bandit/bandit-level25-3.png)
+
+`showtext`?? Never heard of that type of shell. 
+
+So, I searched a bit and yes there is no such such type of shell. Let’s have a look at its executable:
+
+![Level-25](/static/writeups/overthewire/bandit/bandit-level25-4.png)
+
+So, its basically just using `more` command to read a file named `text.txt` and then exit out with exit code of 0. So that’s why it automatically disconnects when tried to run.
+
+What we need to do is trigger `more` to enter its command mode (Refer to the man page of `more` if you're unfamiliar with command mode), ensuring that the SSH request doesn't simply exit.
+
+Let’s make our terminal as small as possible then ssh in:
+
+![Level-25](/static/writeups/overthewire/bandit/bandit-level25-5.png)
+
+So yeah we have successfully launched `more` in its command mode.
+
+That’s the way to break out. ***Very out of the box to get out of the box.***
+
+Now, If we look at the man-page of `more` we can see that by pressing the “v” key (while in interactive mode) it will open the current line in an editor that is defined by the VISUAL and EDITOR environment variables. If both the variables are not set then Vim will be used. Lets see on pressing “v” which editor we get.
+
+And we got vim:
+
+![Level-25](/static/writeups/overthewire/bandit/bandit-level25-6.png)
+
+Now, we can open another file using `:e` command.
+
+We want the password for `bandit26` so the command will be:
+
+```bash
+:e /etc/bandit_pass/bandit26
+```
+
+Run it and we got the password:
+
+![Level-25](/static/writeups/overthewire/bandit/bandit-level25-7.png)
+
+but we haven’t got a shell still and when we will ssh into this level it will still kick us out.
+
+Thank God we can call a shell from Vim; otherwise, it would be a hell of a difficulty level.
+
+To get a shell, we will use `:shell` command that vim offers. This command, uses the default shell of user (which in our case is `/usr/bin/showtext`). What we need to do is to set the default shell of the user in vim to actual shell (`/bin/bash`). The command to do that will be `:set shell=/bin/bash` and then now simply call it:
+
+```bash
+:shell
+```
+
+And we are in:
+
+![Level-25](/static/writeups/overthewire/bandit/bandit-level25-8.png)
+
+Tricky challenge I Know. 🙃
 
 ---
 
-### ***Level 26:***
+## Level 26:
 
-***Good job getting a shell! Now hurry and grab the password for bandit27!***
+**Good job getting a shell! Now hurry and grab the password for bandit27!**
 
-```bash
+```:Password
 YnQpBuifNMas1hcUFk70ZmqkhUU2EuaS
 ```
 
-- ***Explanation:***
-    
-    *Easy*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/35649867-c941-4c05-a244-54540509138d/Untitled.png)
-    
+#### Explanation:
+
+Easy, same as [level 19](#level-19). 
+
+![Level-26](/static/writeups/overthewire/bandit/bandit-level26-1.png)
+
+
+I Used this command to get bandit27’s pasword:
+
+```bash
+./bandit27-do cat /etc/bandit_pass/bandit27
+```
+
+![Level-26](/static/writeups/overthewire/bandit/bandit-level26-2.png)
 
 ---
 
@@ -1131,16 +1193,12 @@ xbhV3HpNGlTIdnjUrdAlPzc2L6y9EOnS
 
 ---
 
-### ***Level 33:***
+## **Level 33:**
 
-***At this moment, level 34 does not exist yet.***
-
----
-
-# *—————————THE END——————————*
+**At this moment, level 34 does not exist yet.**
 
 ---
 
----
+# *—————————THE END—————————*
 
-[OverTheWire (Quest)](https://www.notion.so/OverTheWire-Quest-ba967e2b24f54b15a26ae32d41f65030?pvs=21)
+---

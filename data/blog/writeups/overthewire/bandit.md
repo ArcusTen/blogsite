@@ -992,213 +992,258 @@ I Used this command to get bandit27’s pasword:
 
 ---
 
-### ***Level 27:***
+## Level 27:
 
-***There is a git repository at*** `ssh://bandit27-git@localhost/home/bandit27-git/repo` ***via the port* `2220`*. The password for the user* `bandit27-git` *is the same as for the user*** `bandit27`***.***
+**There is a git repository at** `ssh://bandit27-git@localhost/home/bandit27-git/repo` **via the port** `2220`. **The password for the user** `bandit27-git` **is the same as for the user** `bandit27`.
 
-***Clone the repository and find the password for the next level.***
+**Clone the repository and find the password for the next level.**
 
-```bash
+```:Password
 AVanL161y9rsbcJIsFHuw35rjaOM19nR
 ```
 
-- ***Explanation:***
-    
-    *First move into a directory where we have write permissions:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/e631dcb6-38b5-4e79-973e-0928a74ddebc/Untitled.png)
-    
-    *Now clone the provided repository via port* **`2220`** *by running this command:*
-    
-    ```bash
-    git clone ssh://bandit27-git@localhost:2220/home/bandit27-git/repo
-    ```
-    
-    *It will ask you for the password. Type the password of curent level:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/6c29f959-9e61-457a-80a3-ee3c1b69f1f2/Untitled.png)
-    
-    *We got a repo having* **`README`** *file in it:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/19bc5d97-c328-41c2-ad45-ec7a3006a973/Untitled.png)
-    
-    *cat that out:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/da5204d6-f12d-4f98-8746-9b5b0e60dcd9/Untitled.png)
-    
-    *The password is:* **`AVanL161y9rsbcJIsFHuw35rjaOM19nR`**
-    
+#### Explanation:
+
+First move into a directory where we have write permissions. Now clone the provided repository via port `2220` by running this command:
+
+```bash
+git clone ssh://bandit27-git@localhost:2220/home/bandit27-git/repo
+```
+
+It will ask you for the password. Type the password of curent level:
+
+![Level-27](/static/writeups/overthewire/bandit/bandit-level27-1.png)
+
+We got a `README` file in cloned repo. Cat that out:
+
+![Level-27](/static/writeups/overthewire/bandit/bandit-level27-2.png)
 
 ---
 
-### ***Level 28:***
+## Level 28:
 
-***There is a git repository at* `ssh://bandit28-git@localhost/home/bandit28-git/repo` *via the port* `2220`*. The password for the user* `bandit28-git` *is the same as for the user* `bandit28`.**
+**There is a git repository at `ssh://bandit28-git@localhost/home/bandit28-git/repo` via the port `2220`. The password for the user `bandit28-git` is the same as for the user `bandit28`.**
 
-*Clone the repository and find the password for the next level.*
+Clone the repository and find the password for the next level.
 
-```bash
+```:Password
 tQKvmcwNYcFS6vmPHIUSI3ShmsrQZK8S
 ```
 
-- ***Explanation:***
-    
-    *First move into a directory where we have write permissions:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/cc2f7ac6-aa49-4d08-8e6e-506fe3df1da2/Untitled.png)
-    
-    *Now clone the provided repository via port* **`2220`** *by running this command:*
-    
-    ```bash
-    git clone ssh://bandit28-git@localhost:2220/home/bandit28-git/repo
-    ```
-    
-    *It will ask you for the password. Type the password of curent level:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/6c29f959-9e61-457a-80a3-ee3c1b69f1f2/Untitled.png)
-    
-    *We got a repo having* **`README.md`** *file in it:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/f6500305-ca0a-4372-87be-92adce0eff1b/Untitled.png)
-    
-    *cat that out:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/b942d088-a838-4237-9bdb-7e9fa7a62e00/Untitled.png)
-    
-    *UMMM.*
-    
-    *Let’s have a look at logs:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/b988f0eb-a375-4b4f-86d8-5c9035cbb652/Untitled.png)
-    
-    *Let’s check the commit “add missing data”:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/2b133e84-7cce-4950-b8e6-fea4dd36db9e/Untitled.png)
-    
-    *Now, cat that again:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/eb2aa61b-5f58-4f5d-9992-37bfb372d2a9/Untitled.png)
-    
-    *The password is:* **`tQKvmcwNYcFS6vmPHIUSI3ShmsrQZK8S`**
-    
+#### Explanation:
+
+First move into a directory where we have write permissions. Now clone the provided repository via port `2220` by running this command:
+
+```bash
+git clone ssh://bandit28-git@localhost:2220/home/bandit28-git/repo
+```
+
+It will ask you for the password. Type the password of curent level:
+
+![Level-27](/static/writeups/overthewire/bandit/bandit-level28-1.png)
+
+We got a `README` file in cloned repo. Cat that out:
+
+![Level-27](/static/writeups/overthewire/bandit/bandit-level28-2.png)
+
+UMMM.
+
+Let’s have a look at logs:
+
+![Level-28](/static/writeups/overthewire/bandit/bandit-level28-3.png)
+
+Let’s check the commit `add missing data`:
+
+![Level-28](/static/writeups/overthewire/bandit/bandit-level28-4.png)
+
+Now, cat that again:
+
+![Level-28](/static/writeups/overthewire/bandit/bandit-level28-5.png)
 
 ---
 
-### ***Level 29:***
+## Level 29:
 
-***There is a git repository at* `ssh://bandit29-git@localhost/home/bandit29-git/repo` *via the port* `2220`*. The password for the user* `bandit29-git` *is the same as for the user* `bandit29`*.***
+**There is a git repository at `ssh://bandit29-git@localhost/home/bandit29-git/repo` via the port `2220`. The password for the user `bandit29-git` is the same as for the user `bandit29`.**
 
-***Clone the repository and find the password for the next level.***
+**Clone the repository and find the password for the next level.**
 
-```bash
+```:Password
 xbhV3HpNGlTIdnjUrdAlPzc2L6y9EOnS
 ```
 
-- ***Explanation:***
-    
-    *First move into a directory where we have write permissions:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/5de405cc-cfc9-419f-bd44-702d342ad379/Untitled.png)
-    
-    *Now clone the provided repository via port* **`2220`** *by running this command:*
-    
-    ```bash
-    git clone ssh://bandit29-git@localhost:2220/home/bandit29-git/repo
-    ```
-    
-    *It will ask you for the password. Type the password of curent level:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/8496c25f-d55a-45ac-9e1b-05f7c4eda9eb/Untitled.png)
-    
-    *We got a repo having* **`README.md`** *file in it:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/f9a5b8b4-2c09-4f17-99a9-6840ae45e16a/Untitled.png)
-    
-    *cat that out:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/2b507708-00e6-4e15-a6d1-61aa1aed633a/Untitled.png)
-    
-    *Hmmmm.*
-    
-    *Let’s have a look at logs:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/42b3d815-3de6-41ea-b2d6-42d18b4d1ea3/Untitled.png)
-    
-    *Let’s check the “initial commit”:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/ca044433-6dcc-4e32-8ac0-471445202272/Untitled.png)
-    
-    *Now, cat that again. Nope same output:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/25ea49d6-8e33-4199-a0da-3b67543d5aae/Untitled.png)
-    
-    *Let’s see what other branches we have:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/26006be7-70dd-4648-b54d-d8fc6c471198/Untitled.png)
-    
-    *We are currently in* **`master`***:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/2059ccce-5cf6-42fa-9bc4-fb7655f9f247/Untitled.png)
-    
-    *Let’s switch to* **`dev`** *and see that we get:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/69d402f4-dff9-4dab-85a9-b6d09e208951/Untitled.png)
-    
-    *Let’s cat this* **`README.md`** *file:*
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/70b309c8-b3ac-401d-813a-0314217bed11/fa1fe9a3-eb80-495a-9d0c-93a5da6ec7d8/Untitled.png)
-    
-    *The password is:* **`xbhV3HpNGlTIdnjUrdAlPzc2L6y9EOnS`**
-    
+#### Explanation:
 
----
+By now you should know how to clone a repository. In the cloned repo, we have `README.md` file. Cat that out:
 
-### ***Level 30:***
+![Level-29](/static/writeups/overthewire/bandit/bandit-level29-1.png)
 
-***There is a git repository at* `ssh://bandit30-git@localhost/home/bandit30-git/repo` *via the port* `2220`*. The password for the user* `bandit30-git` *is the same as for the user* `bandit30`*.***
+Hmmmm. Let’s have a look at logs:
 
-***Clone the repository and find the password for the next level.***
+![Level-29](/static/writeups/overthewire/bandit/bandit-level29-2.png)
+
+Let’s check the “initial commit”:
+
+![Level-29](/static/writeups/overthewire/bandit/bandit-level29-3.png)
+
+Now, cat that again. Nope same output:
+
+![Level-29](/static/writeups/overthewire/bandit/bandit-level29-4.png)
+
+Let’s see what other branches we have:
 
 ```bash
-
+git branch -r
 ```
 
-- ***Explanation:***
+We are currently on `master`.
 
----
+![Level-29](/static/writeups/overthewire/bandit/bandit-level29-5.png)
 
-### ***Level 31:***
-
-***There is a git repository at* `ssh://bandit31-git@localhost/home/bandit31-git/repo` *via the port* `2220`*. The password for the user* `bandit31-git` *is the same as for the user* `bandit31`*.***
-
-***Clone the repository and find the password for the next level.***
+Let's switch to the `dev` branch and see what they have for us there:
 
 ```bash
-
+git checkout dev
 ```
 
-- ***Explanation:***
+![Level-29](/static/writeups/overthewire/bandit/bandit-level29-6.png)
+
+Let’s cat this `README.md` file:
+
+![Level-29](/static/writeups/overthewire/bandit/bandit-level29-7.png)
 
 ---
 
-### ***Level 32:***
+## Level 30:
 
-***After all this* `git` *stuff its time for another escape. Good luck!***
+**There is a git repository at `ssh://bandit30-git@localhost/home/bandit30-git/repo` via the port `2220`. The password for the user `bandit30-git` is the same as for the user `bandit30`.**
+
+**Clone the repository and find the password for the next level.**
+
+```:Password
+OoffzGDlzhAlerFJ2cAiz1D41JW1Mhmt
+```
+
+#### Explanation:
+
+In the cloned repo, we have `README.md` file. Cat that out:
+
+![Level-30](/static/writeups/overthewire/bandit/bandit-level30-1.png)
+
+Hmmmm. Let’s have a look at logs:
+
+![Level-30](/static/writeups/overthewire/bandit/bandit-level30-2.png)
+
+We are already on the “initial commit”. Let’s see what other branches we have:
 
 ```bash
-
+git branch -r
 ```
 
-- ***Explanation:***
+We are currently on `master` and we have no other branches:
+
+![Level-30](/static/writeups/overthewire/bandit/bandit-level30-3.png)
+
+Let's check `tags`. In git, tags are used to mark specific points in history such as release versions for easy reference.
+
+![Level-30](/static/writeups/overthewire/bandit/bandit-level30-4.png)
+
+We have one tag named `secret`. Let's see what it is and here is the password:
+
+![Level-30](/static/writeups/overthewire/bandit/bandit-level30-5.png)
 
 ---
 
-## **Level 33:**
+## Level 31:
+
+**There is a git repository at `ssh://bandit31-git@localhost/home/bandit31-git/repo` via the port `2220`. The password for the user `bandit31-git` is the same as for the user `bandit31`.**
+
+**Clone the repository and find the password for the next level.**
+
+```:Password
+rmCBvG56y58BXzv98yZGdO7ATVL5dW8y
+```
+
+#### Explanation:
+
+Contents of `README.md` file:
+
+![Level-31](/static/writeups/overthewire/bandit/bandit-level31-1.png)
+
+Let’s have a look at logs:
+
+![Level-31](/static/writeups/overthewire/bandit/bandit-level31-2.png)
+
+We are already on the “initial commit”. Let’s see what other branches we have:
+
+![Level-31](/static/writeups/overthewire/bandit/bandit-level31-2.png)
+
+We are currently on `master` and we have no other branches plus the `README` file says that the `key.txt` is in master branch:
+
+![Level-31](/static/writeups/overthewire/bandit/bandit-level31-3.png)
+
+Look what I found:
+
+![Level-31](/static/writeups/overthewire/bandit/bandit-level31-4.png)
+
+`.gitignore` files are used to specify intentionally untracked files and directories that Git should ignore, preventing them from being staged or committed. They help maintain clean repositories by filtering out files like build artifacts, temporary files etc. In our case, it includes `*.txt`, which means it will ignore all text files. That's why we can't find the `key.txt` file.
+
+![Level-31](/static/writeups/overthewire/bandit/bandit-level31-5.png)
+
+To retrieve password, remove the `.gitignore` file and create a `key.txt` file with content specified in the `README.md` file:
+
+![Level-31](/static/writeups/overthewire/bandit/bandit-level31-6.png)
+
+Stage it, commit and push to the repo:
+
+![Level-31](/static/writeups/overthewire/bandit/bandit-level31-7.png)
+
+Here is the password:
+
+![Level-31](/static/writeups/overthewire/bandit/bandit-level31-8.png)
+
+---
+
+## Level 32:
+
+**After all this `git` stuff its time for another escape. Good luck!**
+
+```:Password
+odHo63fHiFqcWWJG9rLiLDtPm45KzUKy
+```
+
+#### Explanation:
+
+For this level, we got a weird shell "**THE UPPERCASE SHELL**". That just capitalize whatever command is passed to it:
+
+![Level-32](/static/writeups/overthewire/bandit/bandit-level32-1.png)
+
+So basically, what's going on is that this shell we are looking at is just a binary file. It takes whatever we type in, switches it to uppercase and then tells shell to run it as a command. Remember how we check what shell we have by running `echo "$0"`:
+
+![Level-32](/static/writeups/overthewire/bandit/shell.png)
+
+This is because variable `$0` stores the name of the file orscript that is currently being executed. If we run `echo "$0"` in the terminal, we will see that we are getting the name of the currently used shell. But if we just run `$0`, it spawns a new shell(`zsh`):
+
+![Level-32](/static/writeups/overthewire/bandit/demo.png)
+
+Let's try out this theory in level 32:
+
+![Level-32](/static/writeups/overthewire/bandit/bandit-level32-2.png)
+
+We got a stable shell. Plus, here is the password:
+
+![Level-32](/static/writeups/overthewire/bandit/bandit-level32-3.png)
+
+***EASY...***
+
+---
+
+## Level 33:
 
 **At this moment, level 34 does not exist yet.**
 
 ---
 
-# *—————————THE END—————————*
+# *————————(THE END)———————*
 
 ---

@@ -7,13 +7,14 @@ summary: Overwriting a variable using the Format String Bug to fulfill an if-els
 ---
 ## Challenge Description
 
-![Fmt-2-sc](/static/writeups/picoCTF/format-string-2/fmt2_chal_des.png)
+![Fmt-2-sc](/static/writeups/picoCTF/pwn/format-string-2/fmt2_chal_des.png)
 
 ## Solution
 
 Before starting, I want to say that I am not an expert when it comes to binary exploitation. If you find mistakes in my write-ups, please let me know. I am open to any sort of constructive criticism.
 
 Source code provided to us:
+
 ```c:vuln.c
 #include <stdio.h>
 
@@ -71,7 +72,7 @@ AAAAAAAA|%p|%p|%p|%p|%p|%p|%p|%p|%p|%p|%p|%p|%p|%p|%p|%p|%p|%p|%p|%p|%p|%p|%p|%p
 
 Here I can see that my offset is 14:
 
-![Fmt-2-sc](/static/writeups/picoCTF/format-string-2/fmt2_1.png)
+![Fmt-2-sc](/static/writeups/picoCTF/pwn/format-string-2/fmt2_1.png)
 
 Now, I know that I also need to know what address to write to. In this case it can be found using **`objdump`** on the binary:
 
@@ -79,7 +80,7 @@ Now, I know that I also need to know what address to write to. In this case it c
 objdump -D ./vuln | grep "sus"
 ```
 
-![Fmt-2-sc](/static/writeups/picoCTF/format-string-2/fmt2_2.png)
+![Fmt-2-sc](/static/writeups/picoCTF/pwn/format-string-2/fmt2_2.png)
 
 So, basically I want to overwrite address `0x404060` with the value `0x67616c66`. Let’s start making our payload.
 
@@ -133,11 +134,12 @@ io.interactive()
 ```
 ### Flag:
 
-![Fmt-2-sc](/static/writeups/picoCTF/format-string-2/fmt2_3.png)
+![Fmt-2-sc](/static/writeups/picoCTF/pwn/format-string-2/fmt2_3.png)
 
 ## Bonus
 
 You can automate this whole process by using format string bug exploitation [tools](https://docs.pwntools.com/en/stable/fmtstr.html). The script will be:
+
 ```python:payload-crafted-using-exec_fmt-&-autofmt
 from pwn import *
 
@@ -177,6 +179,6 @@ This script uses the `exec_fmt`, `autofmt` to find the offset for the payload an
 
 ### Flag:
 
-![Fmt-2-sc](/static/writeups/picoCTF/format-string-2/fmt2_4.png)
+![Fmt-2-sc](/static/writeups/picoCTF/pwn/format-string-2/fmt2_4.png)
 
 > *That’s it for today’s blog, take Care* 😃

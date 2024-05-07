@@ -12,7 +12,7 @@ const siteMetadata = {
   socialBanner: '/static/images/twitter-card.png',
   email: 'moharisofficial@gmail.com',
   github: 'https://github.com/ArcusTen',
-  twitter: 'https://twitter.com/arcusten',
+  twitter: 'https://twitter.com/ArcusTen',
   linkedin: 'https://www.linkedin.com/in/muhammad-haris-815aa326a/',
   locale: 'en-US',
   analytics: {

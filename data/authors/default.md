@@ -1,9 +1,9 @@
 ---
 name: Muhammad Haris
-avatar: /static/images/miles.jpg
+avatar: /static/images/glitched.jpg
 occupation: Jr DevOps Engineer & CYS Student
 email: haris@thecyberthesis.com
-twitter: https://twitter.com/arcusten
+twitter: https://twitter.com/ArcusTen
 linkedin: https://www.linkedin.com/in/muhammad-haris-815aa326a/
 github: https://github.com/ArcusTen
 ---
@@ -20,7 +20,7 @@ A junior DevOps engineer and cybersecurity student. I am passionate about integr
 
 ## Currently Learning
 
-- **Programming Languages**: Rust, React Native
+- **Programming Languages**: Golang
 - **Tools & Frameworks**: Kubernetes, Jenkins
 
 ## Experience
@@ -34,7 +34,7 @@ A junior DevOps engineer and cybersecurity student. I am passionate about integr
 ## Achievements
 
 - **2nd Place** in CyberStorm 2.0 by Air University & PCC, on-site in Islamabad (2023)
-- **Top 5%** in [TryHackMe](https://tryhackme.com/p/ArcusTen) a free online platform for learning cyber security & DevSecOps.
+- **Top 4%** in [TryHackMe](https://tryhackme.com/p/ArcusTen) a free online platform for learning cyber security & DevSecOps.
 - **2nd Place** in AIRange'24 CTF by AUCSS (2024)
 
 ## Projects

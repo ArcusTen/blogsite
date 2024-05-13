@@ -104,9 +104,6 @@ hexleak = lambda l: int(l[:-1] if l[-1] == '\n' else l, 16)         # Lambda fun
 exe = "./notes"
 elf = context.binary = ELF(exe)
 libc = elf.libc
-exe = "./notes"
-elf = context.binary = ELF(exe)
-libc = elf.libc
 
 # Set up the connection (remote or local)
 io = remote(sys.argv[1], int(sys.argv[2])) if args.REMOTE else process()
@@ -153,6 +150,10 @@ Running it against remote:
 ![Screenshot](/static/writeups/airange24/pwn/notes10.png)
 
 ### Flag:
+
+```python
+print("hi")
+```
 
 ```
 AUCSS{1_th0ught_cpp_w4s_s3cur3}
